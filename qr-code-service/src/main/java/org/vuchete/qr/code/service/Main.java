@@ -1,4 +1,4 @@
-package org.vuchete;
+package org.vuchete.qr.code.service;
 
 public class Main {
     public static void main(String[] args) {
