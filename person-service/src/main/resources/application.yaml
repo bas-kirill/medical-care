@@ -1,0 +1,32 @@
+##server.port=80
+##hibernate.hbm2ddl.auto=update
+#logging.level.org.hibernate.SQL=DEBUG
+#logging.level.org.hibernate.type=TRACE
+#logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+#spring.jpa.properties.hibernate.format_sql=true
+#spring.jpa.properties.hibernate.generate_statistics=true
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.datasource.url=jdbc:postgresql://localhost:5432/core-person-service
+#spring.datasource.username=postgres
+#spring.datasource.password=123
+#spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+## Hibernate ddl auto (create, create-drop, validate, update)
+#spring.jpa.hibernate.ddl-auto=create
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: vuchete
+    password: ch@nge_me
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+management:
+  endpoint:
+    health:
+      show-details: always
