@@ -1,4 +1,4 @@
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=bas-kirill_VUchete)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=bas-kirill_VUchete)](https://sonarcloud.io/summary/new_code?id=bas-kirill_VUchete)
 
 # VUchete
 
