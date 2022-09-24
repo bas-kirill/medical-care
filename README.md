@@ -1,3 +1,5 @@
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=bas-kirill_VUchete)
+
 # VUchete
 
 ![image](https://user-images.githubusercontent.com/39113667/190704291-67658903-f3f4-430d-bb9b-40a673b646ac.png)
