@@ -1,4 +1,4 @@
-package org.vuchete.person.service.model.jpa;
+package org.vuchete.person.service.model.records;
 
 
 import java.util.HashSet;
@@ -30,7 +30,7 @@ public class Person {
   public Integer id;
 
   @Column
-  public String name;
+  public String fullName;
 
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinColumn(name = "person_id")

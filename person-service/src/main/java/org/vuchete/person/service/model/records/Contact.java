@@ -1,4 +1,4 @@
-package org.vuchete.person.service.model.jpa;
+package org.vuchete.person.service.model.records;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;

@@ -1,4 +1,4 @@
-package org.vuchete.person.service.model.jpa;
+package org.vuchete.person.service.model.records;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashSet;
@@ -45,8 +45,4 @@ public class Address {
   @JoinTable(name = "person_address", joinColumns = @JoinColumn(name = "address_id"), inverseJoinColumns = @JoinColumn(name = "person_id"))
   @JsonIgnore
   public Set<Person> person = new HashSet<>();
-
-  public Long getId() {
-    return id;
-  }
 }

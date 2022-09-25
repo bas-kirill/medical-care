@@ -1,4 +1,4 @@
-package org.vuchete.person.service.model.jpa;
+package org.vuchete.person.service.model.records;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
@@ -34,6 +34,9 @@ public class Document {
   public Person person;
 
   enum Type {
-    PASSPORT, FOREIGN_PASSPORT, SNILS, INSURANCE_POLICY,
+    PASSPORT,
+    FOREIGN_PASSPORT,
+    SNILS,
+    INSURANCE_POLICY,
   }
 }

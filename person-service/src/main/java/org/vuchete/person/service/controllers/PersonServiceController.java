@@ -1,5 +1,6 @@
 package org.vuchete.person.service.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,13 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.vuchete.person.service.model.dto.PersonRequest;
+import org.vuchete.person.service.model.dto.PersonJsonDto;
+import org.vuchete.person.service.respository.PersonRepository;
 
 /**
  * TODO: use OpenAPI for generation => use delegates.
  */
 @RestController
+@RequestMapping("/v1/person-service/")
+@RequiredArgsConstructor
 public class PersonServiceController {
+
+  private final PersonRepository personRepository;
 
   /**
    * Создание / редактирование данные о гражданине.
@@ -22,12 +28,12 @@ public class PersonServiceController {
    * @param person Информация о пользователе.
    */
   @RequestMapping(
-      value = "/v1/person",
+      value = "person",
       method = {RequestMethod.POST, RequestMethod.PUT},
       consumes = MediaType.APPLICATION_JSON_VALUE
   )
-  public void v1CreatePersonPost(@RequestBody PersonRequest person) {
-    // TODO document why this method is empty
+  public void v1CreatePost(@RequestBody PersonJsonDto person) {
+    personRepository.create;
   }
 
   /**
@@ -36,7 +42,7 @@ public class PersonServiceController {
    * @param id Идентификатор пользователя.
    */
   @GetMapping(
-      value = "/v1/person/{id}",
+      value = "/{id}",
       produces = MediaType.APPLICATION_JSON_VALUE
   )
   public void v1GetPersonByIdGet(@PathVariable Long id) {
@@ -52,7 +58,6 @@ public class PersonServiceController {
    * @param region имя региона для фильтрации.
    */
   @GetMapping(
-      value = "/v1/person",
       produces = MediaType.APPLICATION_JSON_VALUE
   )
   public void v1GetPersonsGet(@RequestParam String region) {

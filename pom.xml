@@ -4,16 +4,17 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.5.6</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+
   <groupId>org.vuchete</groupId>
   <artifactId>VUchete</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <sonar.organization>bas-kirill</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-  </properties>
 
   <modules>
     <module>api-gateway-service</module>
@@ -21,5 +22,31 @@
     <module>person-service</module>
     <module>qr-code-service</module>
   </modules>
+
+  <properties>
+    <sonar.organization>bas-kirill</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <java.version>17</java.version>
+  </properties>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Kirill B</name>
+      <email>baskirill@gmail.com</email>
+      <organization>zero10.app</organization>
+      <organizationUrl>zero10.app</organizationUrl>
+    </developer>
+  </developers>
 
 </project>

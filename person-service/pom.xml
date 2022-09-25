@@ -13,70 +13,101 @@
   <groupId>org.vuchete.person.service</groupId>
   <artifactId>person-service</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <name>person-service</name>
+  <description>Manage persons data</description>
 
   <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <db.driver>org.postgresql.Driver</db.driver>
+    <db.url>jdbc:postgresql://localhost:5432/postgres</db.url>
+    <db.username>vuchete</db.username>
+    <db.password>ch@nge_me</db.password>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.8.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>42.5.0</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jooq</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-      <version>2.7.4</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-autoconfigure</artifactId>
-      <version>2.7.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-      <version>RELEASE</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-      <version>2.13.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>5.3.21</version>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-    <!-- https://stackoverflow.com/questions/43574426/how-to-resolve-java-lang-noclassdeffounderror-javax-xml-bind-jaxbexception -->
-    <!-- API, java.xml.bind module -->
-    <dependency>
-      <groupId>jakarta.xml.bind</groupId>
-      <artifactId>jakarta.xml.bind-api</artifactId>
-      <version>2.3.2</version>
-    </dependency>
-
-    <!-- Runtime, com.sun.xml.bind module -->
-    <dependency>
-      <groupId>org.glassfish.jaxb</groupId>
-      <artifactId>jaxb-runtime</artifactId>
-      <version>2.3.2</version>
-    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.24</version>
-      <scope>provided</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.7.4</version>
+        <configuration>
+          <excludes>
+            <exclude>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+<!--        https://stackoverflow.com/questions/51226145/debugging-incorrect-configuration-of-jooq-code-generation-tool-->
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq-codegen-maven</artifactId>
+        <version>3.17.4</version>
+
+        <executions>
+          <execution>
+            <id>jooq-codegen</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+
+        <dependencies>
+          <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.0</version>
+          </dependency>
+        </dependencies>
+
+        <configuration>
+          <jdbc>
+            <driver>org.postgresql.Driver</driver>
+            <url>jdbc:postgresql://localhost:5432/postgres</url>
+            <user>vuchete</user>
+            <password>ch@nge_me</password>
+          </jdbc>
+
+          <generator>
+            <name>org.jooq.codegen.JavaGenerator</name>
+            <database>
+              <includes>.*</includes>
+              <inputSchema>public</inputSchema>
+              <excludes/>
+            </database>
+            <target>
+              <packageName>org.vuchete.person.service.generated</packageName>
+              <directory>target/generated-sources/jooq</directory>
+<!--              <directory>/Users/eertree/IdeaProjects/VUchete/person-service/src/main/java/</directory>-->
+            </target>
+          </generator>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
