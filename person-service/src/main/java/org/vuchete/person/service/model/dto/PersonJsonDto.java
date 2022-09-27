@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Optional;
 import java.util.Set;
-import lombok.ToString;
-import org.vuchete.person.service.model.records.Contact;
+import lombok.Data;
+import org.vuchete.person.service.generated.tables.Contact;
 
 /**
  * Jsonizable POJO.
  */
-@ToString
+@Data
 public class PersonJsonDto {
 
   @JsonProperty("first_name")

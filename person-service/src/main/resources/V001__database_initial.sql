@@ -1,46 +1,45 @@
 create table person
 (
-    id          bigint not null,
+    id          serial primary key,
     --
-    first_name  text   not null,
-    second_name text   not null,
-    middle_name text,
-
-
-    primary key (id)
-)
+    first_name  text not null,
+    second_name text not null,
+    middle_name text
+);
 
 create table address
 (
-    id        bigint not null,
-    person_id bigint not null,
+    id                             serial primary key,
+    person_registration_address_id int,
+    person_residence_address_id    int,
     --
-    country   text   not null,
-    region    text   not null,
-    city      text   not null,
-    street    text   not null,
-    building  text   not null,
+    country                        text not null,
+    region                         text not null,
+    city                           text not null,
+    street                         text not null,
+    building                       text not null,
 
-    primary key (id)
+    foreign key (person_registration_address_id) references person (id),
+    foreign key (person_residence_address_id) references person (id)
 );
 
 create table contact
 (
-    id        bigint not null,
-    person_id bigint not null,
+    id        serial primary key,
+    person_id int  not null,
     --
-    phone     text   not null,
-    email     text   not null,
+    phone     text not null,
+    email     text not null,
 
-    primary key (id)
+    foreign key (person_id) references person (id)
 );
 
 create table document
 (
-    id            bigint not null,
-    person_id     bigint not null,
+    id            serial primary key,
+    person_id     int  not null,
     --
-    document_type text   not null,
+    document_type text not null,
 
-    primary key (id)
+    foreign key (person_id) references person (id)
 );

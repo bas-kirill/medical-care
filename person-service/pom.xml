@@ -21,6 +21,9 @@
     <db.url>jdbc:postgresql://localhost:5432/postgres</db.url>
     <db.username>vuchete</db.username>
     <db.password>ch@nge_me</db.password>
+    <postgres.version>42.5.0</postgres.version>
+    <jooq.version>3.17.4</jooq.version>
+    <spring.boot.maven.plugin.version>2.7.4</spring.boot.maven.plugin.version>
   </properties>
 
   <dependencies>
@@ -28,6 +31,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jooq</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -38,10 +42,27 @@
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>${postgres.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jooq</groupId>
+      <artifactId>jooq</artifactId>
+      <version>${jooq.version}</version>
     </dependency>
   </dependencies>
 
@@ -50,7 +71,7 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>2.7.4</version>
+        <version>${spring.boot.maven.plugin.version}</version>
         <configuration>
           <excludes>
             <exclude>
@@ -60,11 +81,12 @@
           </excludes>
         </configuration>
       </plugin>
+
       <plugin>
 <!--        https://stackoverflow.com/questions/51226145/debugging-incorrect-configuration-of-jooq-code-generation-tool-->
         <groupId>org.jooq</groupId>
         <artifactId>jooq-codegen-maven</artifactId>
-        <version>3.17.4</version>
+        <version>${jooq.version}</version>
 
         <executions>
           <execution>
@@ -77,11 +99,7 @@
         </executions>
 
         <dependencies>
-          <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.5.0</version>
-          </dependency>
+
         </dependencies>
 
         <configuration>
@@ -101,9 +119,11 @@
             </database>
             <target>
               <packageName>org.vuchete.person.service.generated</packageName>
-              <directory>target/generated-sources/jooq</directory>
-<!--              <directory>/Users/eertree/IdeaProjects/VUchete/person-service/src/main/java/</directory>-->
-            </target>
+              <directory>target/generated-sources/jooq/src/main/java</directory>
+             </target>
+             <generate>
+               <sequences>true</sequences>
+             </generate>
           </generator>
         </configuration>
       </plugin>

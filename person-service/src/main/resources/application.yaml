@@ -13,13 +13,16 @@
 #spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 ## Hibernate ddl auto (create, create-drop, validate, update)
 #spring.jpa.hibernate.ddl-auto=create
-
+#
 spring:
+  application:
+    name: person-service
+
   datasource:
-    driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres
     username: vuchete
     password: ch@nge_me
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     properties:
