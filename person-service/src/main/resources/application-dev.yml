@@ -9,8 +9,8 @@ management:
 
 spring:
   datasource:
-    username: zero10 # zero10
-    password: zero10 # zero10
+    username: zero10
+    password: zero10
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://database:5432/zero10
     hikari:
@@ -21,13 +21,9 @@ spring:
       max-lifetime: 1200000
       idle-timeout: 13000
       connection-timeout: 20000
-  #  sql:
-  #    init:
-  #      mode: always
   jpa:
     hibernate.ddl-auto: create-drop
     properties:
-      # hibernate.jdbc.batch_size: 10
       hibernate.jdbc.time_zone: UTC
     open-in-view: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
