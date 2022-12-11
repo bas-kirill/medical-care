@@ -1,0 +1,13 @@
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: logs
+      file-date-format: yyyy-MM-dd
+      prefix: access-log
+      suffix: .log
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
