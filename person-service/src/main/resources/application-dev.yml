@@ -1,0 +1,33 @@
+info:
+  owner: Kirill B
+  email: baskirill.an@gmail.com
+
+management:
+  endpoint:
+    info:
+      enabled: true
+
+spring:
+  datasource:
+    username: zero10 # zero10
+    password: zero10 # zero10
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://database:5432/zero10
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 1
+      connection-test-query: SELECT 1
+      validation-timeout: 3500
+      max-lifetime: 1200000
+      idle-timeout: 13000
+      connection-timeout: 20000
+  #  sql:
+  #    init:
+  #      mode: always
+  jpa:
+    hibernate.ddl-auto: create-drop
+    properties:
+      # hibernate.jdbc.batch_size: 10
+      hibernate.jdbc.time_zone: UTC
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
