@@ -1,18 +1,22 @@
 package org.vuchete.person.service.respository;
 
 
-import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import org.vuchete.person.service.generated.tables.Person;
 import org.vuchete.person.service.generated.tables.records.PersonRecord;
 
 /**
  * person-service CRUD operations.
  */
+@Component
 public class PersonServiceRepository {
 
-  private DSLContext jooq;
+  private final DSLContext jooq;
+
+  public PersonServiceRepository(DSLContext jooq) {
+    this.jooq = jooq;
+  }
 
   /**
    * Вставка записи о гражданине.
@@ -20,12 +24,13 @@ public class PersonServiceRepository {
    * @param personRecord запись.
    */
   public void insert(PersonRecord personRecord) {
-    jooq.transaction(
-        () -> jooq
-            .insertInto(Person.PERSON)
-            .set(personRecord)
-            .returningResult()
-            .execute()
-    );
+    jooq.insertInto(Person.PERSON).set(personRecord).execute();
+//    jooq.transaction(
+//        () -> jooq
+//            .insertInto(Person.PERSON)
+//            .set(personRecord)
+//            .returningResult()
+//            .execute()
+//    );
   }
 }

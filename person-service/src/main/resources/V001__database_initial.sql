@@ -9,7 +9,7 @@ create table person
 
 create table address
 (
-    id                             serial primary key,
+    id                             varchar(255) not null,
     person_registration_address_id int,
     person_residence_address_id    int,
     --
@@ -19,6 +19,7 @@ create table address
     street                         text not null,
     building                       text not null,
 
+    primary key (id),
     foreign key (person_registration_address_id) references person (id),
     foreign key (person_residence_address_id) references person (id)
 );
