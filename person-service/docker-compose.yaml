@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  database:
+    image: postgis/postgis:11-3.0
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=vuchete
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db/postgres/data:/var/lib/postgresql/data/
+      - ./db/postgres/conf:/etc/postgresql
+      - ./db/postgres/logs:/var/log/postgresql
