@@ -1,5 +1,4 @@
-package org.vuchete.person.service.model;
-
+package org.vuchete.medical.service.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,38 +9,35 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "person")
-public class Person {
-
+@Table(name = "vaccination")
+public class Vaccination {
   @Id
   @SequenceGenerator(
-      name = "person_id_sequence",
-      sequenceName = "person_id_sequence",
+      name = "vaccination_id_sequence",
+      sequenceName = "vaccination_id_sequence",
       allocationSize = 1
   )
   @GeneratedValue(
       strategy = GenerationType.SEQUENCE,
-      generator = "person_id_sequence"
+      generator = "vaccination_id_sequence"
   )
-  @Column(name = "id")
   private Long id;
 
-  @Column(name = "full_name")
+  @Column
   private String fullName;
 
-  @Column(name = "address")
-  private String address;
-
-  @Column(name = "passport")
+  @Column
   private String passport;
 
-  public Person() {
-  }
+  @Column
+  private String vaccineName;
 
-  public Person(String fullName, String address, String passport) {
+  public Vaccination() {}
+
+  public Vaccination(String fullName, String passport, String vaccineName) {
     this.fullName = fullName;
-    this.address = address;
     this.passport = passport;
+    this.vaccineName = vaccineName;
   }
 
   public Long getId() {
@@ -52,11 +48,11 @@ public class Person {
     return fullName;
   }
 
-  public String getAddress() {
-    return address;
-  }
-
   public String getPassport() {
     return passport;
+  }
+
+  public String getVaccineName() {
+    return vaccineName;
   }
 }

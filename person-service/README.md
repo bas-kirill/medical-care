@@ -29,3 +29,5 @@
 * Добавить возможность применять миграции при изменении схемы данных с помощью liquibase / flyway / pgmigrate.
 
 Сборка JAR: ```mvn clean compile assembly:single```
+
+Стек микросервиса: Spring Boot, Spring Data, Spring MVC, Spring Cloud

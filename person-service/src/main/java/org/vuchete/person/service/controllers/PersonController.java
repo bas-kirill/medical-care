@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.vuchete.person.service.dto.PersonDto;
 import org.vuchete.person.service.service.PersonService;
@@ -14,7 +15,7 @@ import org.vuchete.person.service.service.PersonService;
 @RequestMapping("/api/v1/person-service/")
 public class PersonController {
 
-  private PersonService personService;
+  private final PersonService personService;
 
   public PersonController(PersonService personService) {
     this.personService = personService;
@@ -28,5 +29,13 @@ public class PersonController {
   @GetMapping(value = "/{id}")
   public PersonDto v1GetPersonByIdGet(@PathVariable Long id) {
     return personService.getById(id);
+  }
+
+  @GetMapping(value = "/verify")
+  public boolean v1VerifyPersonGet(
+      @RequestParam("full_name") String fullName,
+      @RequestParam("passport") String passport
+  ) {
+    return personService.verify(fullName, passport);
   }
 }

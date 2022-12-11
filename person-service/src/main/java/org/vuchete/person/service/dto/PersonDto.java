@@ -6,23 +6,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PersonDto {
 
-  @JsonProperty("first_name")
-  public String firstName;
-
-  @JsonProperty("second_name")
-  public String secondName;
+  @JsonProperty("full_name")
+  public String fullName;
 
   @JsonProperty("address")
   public String address;
 
+  @JsonProperty("passport")
+  public String passport;
+
   @JsonCreator
   public PersonDto(
-      @JsonProperty("first_name") String firstName,
-      @JsonProperty("second_name") String secondName,
-      @JsonProperty("address") String address
+      @JsonProperty("full_name") String fullName,
+      @JsonProperty("address") String address,
+      @JsonProperty("passport") String passport
   ) {
-    this.firstName = firstName;
-    this.secondName = secondName;
+    this.fullName = fullName;
     this.address = address;
+    this.passport = passport;
   }
 }

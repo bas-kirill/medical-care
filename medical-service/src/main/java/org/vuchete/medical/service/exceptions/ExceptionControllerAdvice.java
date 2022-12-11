@@ -1,4 +1,4 @@
-package org.vuchete.person.service.exceptions;
+package org.vuchete.medical.service.exceptions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,15 +15,9 @@ public class ExceptionControllerAdvice {
     log.info(e.getMessage());
     return ResponseEntity.internalServerError().body(
         new BusinessError(
-            ErrorCodes.INTERNAL_SERVER_ERROR.code,
-            ErrorCodes.INTERNAL_SERVER_ERROR.description
+            ErrorCodes.INTERNAL_SERVER_ERROR.getCode(),
+            ErrorCodes.INTERNAL_SERVER_ERROR.getDescription()
         )
     );
-  }
-
-  @ExceptionHandler(PersonNotFoundException.class)
-  ResponseEntity<BusinessError> onPersonDontExistException(RuntimeException e) {
-    log.info(e.getMessage());
-    return ResponseEntity.notFound().build();
   }
 }

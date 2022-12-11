@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "e88a9592-26bd-41db-90dc-bfb193b049b8",
+		"name": "person-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18111236"
+	},
+	"item": [
+		{
+			"name": "Create person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"full_name\": \"Kirill Bas\",\n    \"address\": \"Pafos Gardens\",\n    \"passport\": \"Russian Federation\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/person-service/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"person-service",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Person by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/person-service/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"person-service",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/person-service/verify?passport=Pafos Gardens&full_name=Kirill Bas",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"person-service",
+						"verify"
+					],
+					"query": [
+						{
+							"key": "passport",
+							"value": "Pafos Gardens"
+						},
+						{
+							"key": "full_name",
+							"value": "Kirill Bas"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

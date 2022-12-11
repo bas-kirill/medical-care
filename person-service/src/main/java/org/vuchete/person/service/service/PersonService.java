@@ -15,7 +15,7 @@ public class PersonService {
   }
 
   public void create(PersonDto personDto) {
-    var person = new Person(personDto.firstName, personDto.secondName, personDto.address);
+    var person = new Person(personDto.fullName, personDto.address, personDto.passport);
     personRepository.save(person);
   }
 
@@ -23,9 +23,15 @@ public class PersonService {
     var person = personRepository.findById(id)
         .orElseThrow(PersonNotFoundException::new);
     return new PersonDto(
-        person.getFirstName(),
-        person.getSecondName(),
-        person.getAddress()
+        person.getFullName(),
+        person.getAddress(),
+        person.getPassport()
       );
+  }
+
+  public boolean verify(String fullName, String passport) {
+    var person = personRepository
+        .findByFullNameEqualsAndAddressEquals(fullName, passport);
+    return person.isPresent();
   }
 }

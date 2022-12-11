@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  medical-service:
+    container_name: medical-service
+    build: .
+    restart: always
+    depends_on:
+      - medical-service-database
+    env_file: ./.environment
+    ports:
+      - "8080:8080"
+
+  medical-service-database:
+    container_name: medical-service-database
+    platform: linux/arm64/v8
+    image: postgres:alpine
+    env_file: ./.environment
+    restart: always
+    ports:
+      - "5432:5432"

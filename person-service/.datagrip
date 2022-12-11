@@ -1,0 +1,6 @@
+#DataSourceSettings#
+#LocalDataSource: [LOCAL] person-service
+#BEGIN#
+<data-source source="LOCAL" name="[LOCAL] person-service" uuid="d1a3cf19-7b17-42fc-87af-be2897a05da4"><database-info product="PostgreSQL" version="15.1" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.5.0" dbms="POSTGRES" exact-version="15.1" exact-driver-version="42.5"><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/><driver-ref>postgresql</driver-ref><synchronize>true</synchronize><jdbc-driver>org.postgresql.Driver</jdbc-driver><jdbc-url>jdbc:postgresql://localhost:5432/zero10</jdbc-url><secret-storage>master_key</secret-storage><user-name>zero10</user-name><schema-mapping><introspection-scope><node kind="database" qname="@"><node kind="schema" qname="@"/></node></introspection-scope></schema-mapping><working-dir>$ProjectFileDir$</working-dir></data-source>
+#END#
+
