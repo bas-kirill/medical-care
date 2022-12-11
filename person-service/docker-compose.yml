@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  person-service:
+    container_name: person-service
+    build: .
+    restart: always
+    depends_on:
+      - database
+    env_file: ./.environment
+    ports:
+      - "8080:8080"
+
+  database:
+    platform: linux/arm64/v8
+    image: postgres:alpine
+    env_file: ./.environment
+    container_name: database
+    restart: always
+    ports:
+      - "5432:5432"
