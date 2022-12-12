@@ -1,0 +1,1 @@
+Сборка JAR: ```mvn clean compile assembly:single```
