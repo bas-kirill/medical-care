@@ -20,6 +20,7 @@
     <module>medical-service</module>
     <module>person-service</module>
     <module>qr-code-service</module>
+    <module>service-registry</module>
   </modules>
 
 </project>
