@@ -1,7 +1,7 @@
-package org.vuchete.medical.service.exceptions;
+package org.vuchete.qr.code.service.exceptions;
 
 public enum ErrorCodes {
-  INTERNAL_SERVER_ERROR("BACKEND-2000", "Internal server error");
+  INTERNAL_SERVER_ERROR("BACKEND-1300", "Internal server error");
 
   private final String code;
   private final String description;

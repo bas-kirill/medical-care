@@ -1,8 +1,8 @@
 package org.vuchete.person.service.exceptions;
 
-public class BusinessError {
-  public String error;
-  public String description;
+public final class BusinessError {
+  public final String error;
+  public final String description;
 
   public BusinessError(String error, String description) {
     this.error = error;
