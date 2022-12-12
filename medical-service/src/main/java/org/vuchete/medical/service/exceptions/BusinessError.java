@@ -1,8 +1,8 @@
 package org.vuchete.medical.service.exceptions;
 
-public class BusinessError {
-  private String code;
-  private String description;
+public final class BusinessError {
+  private final String code;
+  private final String description;
 
   public BusinessError(String code, String description) {
     this.code = code;
