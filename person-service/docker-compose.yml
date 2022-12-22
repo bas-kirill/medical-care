@@ -3,11 +3,11 @@ version: "3.8"
 services:
   person-service:
     container_name: person-service
+    env_file: ./.environment
     build: .
     restart: always
     depends_on:
       - database
-    env_file: ./.environment
     ports:
       - "8080:8080"
 
