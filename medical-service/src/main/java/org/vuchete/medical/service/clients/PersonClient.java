@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @FeignClient("person-service")
 public interface PersonClient {
-  @GetMapping("/api/v1/person-service/verify")
+  @GetMapping("/api/v1/person-service/verification")
   boolean verify(String fullName, String passport);
 }

@@ -31,7 +31,7 @@ public class PersonController {
     return personService.getById(id);
   }
 
-  @GetMapping(value = "/verify")
+  @GetMapping(value = "/verification")
   public boolean v1VerifyPersonGet(
       @RequestParam("full_name") String fullName,
       @RequestParam("passport") String passport
