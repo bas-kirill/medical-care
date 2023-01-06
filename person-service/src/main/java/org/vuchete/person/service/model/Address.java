@@ -28,9 +28,9 @@ public class Address {
   @Column(name = "id")
   private Long id;
 
-  @Column(name = "address")
-  private String address;
-
-  @ManyToMany(mappedBy = "accommodations", cascade = {CascadeType.PERSIST})
-  private Set<Person> persons = new LinkedHashSet<>();
+//  @Column(name = "address")
+//  private String address;
+//
+//  @ManyToMany(mappedBy = "accommodations", cascade = {CascadeType.PERSIST})
+//  private Set<Person> persons = new LinkedHashSet<>();
 }

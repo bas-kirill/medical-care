@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.vuchete.person.service.model.Person;
 
 public interface PersonRepository extends JpaRepository<Person, Long> {
-  Optional<Person> findByFullNameEqualsAndAddressEquals(String name, String address);
+  Optional<Person> findByFullNameEquals(String name);
 }

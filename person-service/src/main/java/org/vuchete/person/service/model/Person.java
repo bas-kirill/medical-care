@@ -40,20 +40,47 @@ public class Person {
   @Column(name = "passport")
   private String passport;
 
-  @ManyToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "registration_address_id")
-  private Address registrationAddress;
+//  @ManyToOne(cascade = CascadeType.ALL)
+//  @JoinColumn(name = "registration_address_id")
+//  private Address registrationAddress;
+//
+//  @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//  @JoinTable(
+//      name = "person_accommodations",
+//      joinColumns = @JoinColumn(name = "person_id"),
+//      inverseJoinColumns = @JoinColumn(name = "accommodation_id")
+//  )
+//  private Set<Address> accommodations = new LinkedHashSet<>();
+//
+//  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+//  private Set<IdentityDocument> documents = new LinkedHashSet<>();
 
-  @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-  @JoinTable(
-      name = "person_accommodations",
-      joinColumns = @JoinColumn(name = "person_id"),
-      inverseJoinColumns = @JoinColumn(name = "accommodation_id")
-  )
-  private Set<Address> accommodations = new LinkedHashSet<>();
+  // Avoid "No default constructor for entity"
+  public Person() {
+  }
 
-  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-  private Set<IdentityDocument> documents = new LinkedHashSet<>();
+  public Person(String fullName, String passport) {
+    this.fullName = fullName;
+    this.passport = passport;
+  }
 
+  public String getFullName() {
+    return fullName;
+  }
 
+  public String getPassport() {
+    return passport;
+  }
+
+//  public Address getRegistrationAddress() {
+//    return registrationAddress;
+//  }
+//
+//  public Set<Address> getAccommodations() {
+//    return accommodations;
+//  }
+//
+//  public Set<IdentityDocument> getDocuments() {
+//    return documents;
+//  }
 }
