@@ -31,7 +31,6 @@ public class Person {
       strategy = GenerationType.SEQUENCE,
       generator = "person_id_sequence"
   )
-  @Column(name = "id")
   private Long id;
 
   @Column(name = "full_name")
@@ -62,6 +61,10 @@ public class Person {
   public Person(String fullName, String passport) {
     this.fullName = fullName;
     this.passport = passport;
+  }
+
+  public Long getId() {
+    return id;
   }
 
   public String getFullName() {

@@ -36,4 +36,4 @@
 Сборка JAR: make build-jar<br>
 Запуск сервиса: make run
 
-Технический стек: Spring Boot, Spring Data, Spring MVC, Spring Cloud, JUnit
+Технический стек: Spring Boot, Spring Data, Spring MVC, Spring Cloud, Testcontainers, JUnit

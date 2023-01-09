@@ -1,5 +1,6 @@
 package org.vuchete.person.service.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,18 +27,23 @@ public class PersonController {
     this.personService = personService;
   }
 
-  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   Person createPerson(@RequestBody Person person) {
     return personService.create(person);
   }
 
-  @GetMapping(value = "/{id}")
+  @GetMapping
+  Iterable<Person> getPeople() {
+    return personService.findAll();
+  }
+
+  @GetMapping("/{id}")
   Person getPersonById(@PathVariable Long id) {
     return personService.getById(id);
   }
 
-  @GetMapping(value = "/verification")
+  @GetMapping("/verification")
   boolean verifyPerson(
       @RequestParam("full_name") String fullName,
       @RequestParam("passport") String passport
@@ -45,12 +51,12 @@ public class PersonController {
     return personService.verify(fullName, passport);
   }
 
-  @PatchMapping(value = "/{id}}")
+  @PatchMapping("/{id}}")
   Person updatePerson(@PathVariable String id, @RequestBody Person person) {
     return null;
   }
 
-  @DeleteMapping(value = "/{id}")
+  @DeleteMapping("/{id}")
   void deletePerson(@PathVariable String id) {
     // TODO
   }
