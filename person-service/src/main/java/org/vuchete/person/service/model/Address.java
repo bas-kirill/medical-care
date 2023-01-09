@@ -1,12 +1,16 @@
 package org.vuchete.person.service.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "address")
@@ -24,17 +28,9 @@ public class Address {
   @Column(name = "id")
   private Long id;
 
-  @Column(name = "accomodation")
-  private String accomodation;
-
-  @Column(name = "registration_address")
-  private String registrationAddress;
-
-  public Address() {}
-
-  public Address(Long id, String accommodation, String registrationAddress) {
-    this.id = id;
-    this.accomodation = accommodation;
-    this.registrationAddress = registrationAddress;
-  }
+//  @Column(name = "address")
+//  private String address;
+//
+//  @ManyToMany(mappedBy = "accommodations", cascade = {CascadeType.PERSIST})
+//  private Set<Person> persons = new LinkedHashSet<>();
 }

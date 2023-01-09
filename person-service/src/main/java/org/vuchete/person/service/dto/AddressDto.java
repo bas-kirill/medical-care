@@ -5,18 +5,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AddressDto {
-  @JsonProperty("accommodation")
-  private String accommodation;
-
-  @JsonProperty("registration_address")
-  private String registrationAddress;
+  @JsonProperty("address")
+  private String address;
 
   @JsonCreator
-  public AddressDto(
-      @JsonProperty("accommodation") String accommodation,
-      @JsonProperty("registration_address") String registrationAddress
-  ) {
-    this.accommodation = accommodation;
-    this.registrationAddress = registrationAddress;
+  public AddressDto(@JsonProperty("accommodation") String address) {
+    this.address = address;
   }
 }
