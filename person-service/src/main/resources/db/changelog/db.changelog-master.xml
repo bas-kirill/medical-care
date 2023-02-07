@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+		objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+	<changeSet id="1650567898424-1" author="headneZzz (generated)">
+		<createTable tableName="address">
+			<column autoIncrement="true" name="id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="address_pkey"/>
+			</column>
+			<column name="city" type="VARCHAR(255)"/>
+			<column name="street" type="VARCHAR(255)"/>
+			<column name="region_id" type="BIGINT"/>
+		</createTable>
+	</changeSet>
+	<changeSet id="1650567898424-2" author="headneZzz (generated)">
+		<createTable tableName="contact">
+			<column autoIncrement="true" name="id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="contact_pkey"/>
+			</column>
+			<column name="contact_type" type="VARCHAR(255)"/>
+			<column name="value" type="VARCHAR(255)"/>
+			<column name="person_id" type="BIGINT"/>
+		</createTable>
+	</changeSet>
+	<changeSet id="1650567898424-3" author="headneZzz (generated)">
+		<createTable tableName="identity_document">
+			<column autoIncrement="true" name="id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="identity_document_pkey"/>
+			</column>
+			<column name="number" type="VARCHAR(255)"/>
+			<column name="type" type="VARCHAR(255)"/>
+			<column name="person_id" type="BIGINT"/>
+		</createTable>
+	</changeSet>
+	<changeSet id="1650567898424-4" author="headneZzz (generated)">
+		<createTable tableName="person">
+			<column autoIncrement="true" name="id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="person_pkey"/>
+			</column>
+			<column name="first_name" type="VARCHAR(255)"/>
+			<column name="last_name" type="VARCHAR(255)"/>
+			<column name="middle_name" type="VARCHAR(255)"/>
+			<column name="registration_adress_id" type="BIGINT"/>
+		</createTable>
+	</changeSet>
+	<changeSet id="1650567898424-5" author="headneZzz (generated)">
+		<createTable tableName="region">
+			<column autoIncrement="true" name="id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="region_pkey"/>
+			</column>
+			<column name="name" type="VARCHAR(255)"/>
+		</createTable>
+	</changeSet>
+	<changeSet id="1650567898424-6" author="headneZzz (generated)">
+		<createTable tableName="person_identity_documents">
+			<column name="person_id" type="BIGINT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="identity_documents_id" type="BIGINT">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="1650567898424-7" author="headneZzz (generated)">
+		<createTable tableName="person_contacts">
+			<column name="person_id" type="BIGINT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="contacts_id" type="BIGINT">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="1650567898424-8" author="headneZzz (generated)">
+		<addUniqueConstraint columnNames="identity_documents_id" constraintName="uk_18pejhj6m280nu0tnuhuepn7i"
+							 tableName="person_identity_documents"/>
+	</changeSet>
+	<changeSet id="1650567898424-9" author="headneZzz (generated)">
+		<addUniqueConstraint columnNames="contacts_id" constraintName="uk_2oebw8nrjf1nf9gmxox9g8vcs"
+							 tableName="person_contacts"/>
+	</changeSet>
+	<changeSet id="1650567898424-10" author="headneZzz (generated)">
+		<createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+						minValue="1" sequenceName="hibernate_sequence" startValue="1"/>
+	</changeSet>
+	<changeSet id="1650567898424-11" author="headneZzz (generated)">
+		<createTable tableName="person_addresses">
+			<column name="person_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="person_addresses_pkey"/>
+			</column>
+			<column name="addresses_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true" primaryKeyName="person_addresses_pkey"/>
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="1650567898424-12" author="headneZzz (generated)">
+		<addForeignKeyConstraint baseColumnNames="region_id" baseTableName="address"
+								 constraintName="fk4ljdc68rnke4txup1jlf1il4l" onDelete="NO ACTION" onUpdate="NO ACTION"
+								 referencedColumnNames="id" referencedTableName="region"/>
+	</changeSet>
+	<changeSet id="1650567898424-13" author="headneZzz (generated)">
+		<addForeignKeyConstraint baseColumnNames="addresses_id" baseTableName="person_addresses"
+								 constraintName="fkecc9xua6492md5768gk9t4p2g" onDelete="NO ACTION" onUpdate="NO ACTION"
+								 referencedColumnNames="id" referencedTableName="address"/>
+	</changeSet>
+	<changeSet id="1650567898424-14" author="headneZzz (generated)">
+		<addForeignKeyConstraint baseColumnNames="person_id" baseTableName="person_addresses"
+								 constraintName="fkg4hhg5iayyfbeatys0g0jedu5" onDelete="NO ACTION" onUpdate="NO ACTION"
+								 referencedColumnNames="id" referencedTableName="person"/>
+	</changeSet>
+	<changeSet id="1650567898424-15" author="headneZzz (generated)">
+		<addForeignKeyConstraint baseColumnNames="person_id" baseTableName="identity_document"
+								 constraintName="fkhdsc4tosyiek7cvnts8vo5c4p" onDelete="NO ACTION" onUpdate="NO ACTION"
+								 referencedColumnNames="id" referencedTableName="person"/>
+	</changeSet>
+	<changeSet id="1650567898424-16" author="headneZzz (generated)">
+		<addForeignKeyConstraint baseColumnNames="person_id" baseTableName="contact"
+								 constraintName="fkjbcdaayhsa4dhcuc5q0kkw8et" onDelete="NO ACTION" onUpdate="NO ACTION"
+								 referencedColumnNames="id" referencedTableName="person"/>
+	</changeSet>
+	<changeSet id="1650567898424-17" author="headneZzz (generated)">
+		<addForeignKeyConstraint baseColumnNames="registration_adress_id" baseTableName="person"
+								 constraintName="fkq4oboq9da5nlqlkswcq01f7yv" onDelete="NO ACTION" onUpdate="NO ACTION"
+								 referencedColumnNames="id" referencedTableName="address"/>
+	</changeSet>
+
+</databaseChangeLog>
