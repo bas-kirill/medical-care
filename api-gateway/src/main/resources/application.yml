@@ -1,0 +1,55 @@
+server:
+  port: 80
+
+prefix: /api/v1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+
+spring:
+  zipkin:
+    baseUrl: http://localhost:9411/
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: person-service
+          uri: lb://PERSON-SERVICE
+          predicates:
+            - Path=${prefix}/person/**
+          filters:
+            - RewritePath=${prefix}/(?<path>.*), /$\{path}
+        - id: qr-code-storage-service
+          uri: lb://QR-CODE-STORAGE-SERVICE
+          predicates:
+            - Path=${prefix}/qr/**
+          filters:
+            - RewritePath=${prefix}/(?<path>.*), /$\{path}
+        - id: medical-api
+          uri: lb://MEDICAL-API
+          predicates:
+            - Path=${prefix}/medical/**
+          filters:
+            - RewritePath=${prefix}/(?<path>.*), /$\{path}
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /${prefix}/$\{path}/v3/api-docs
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: person
+        url: /v3/api-docs/person
+      - name: qr-code
+        url: /v3/api-docs/qr
+      - name: medical
+        url: /v3/api-docs/medical
