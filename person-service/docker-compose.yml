@@ -1,0 +1,26 @@
+version: "3"
+services:
+  person-service:
+    build: .
+    container_name: person-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://person-db:5432/persondb
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - person-db
+  person-db:
+    image: postgres
+    container_name: person-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=persondb
+    ports:
+      - "5433:5432"
+    volumes:
+      - persondata:/var/lib/postgresql/data
+    restart: always
+volumes:
+  persondata:
